@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <h1>Hello User, Welcome On Add Restaurant Page</h1>
+  <h1>Hello {{ user }}, Welcome On Add Restaurant Page</h1>
   <form class="add">
     <input
       type="text"
@@ -27,6 +27,7 @@
 
 <script>
 import Header from "./Header.vue";
+import axios from "axios";
 
 export default {
   name: "Add",
@@ -40,15 +41,24 @@ export default {
         address: "",
         contact: "",
       },
+      user: "",
     };
   },
   methods: {
-    addRestaurant() {
-      console.log(this.restaurant);
+    async addRestaurant() {
+      let result = await axios.post(
+        "http://localhost:3000/restaurants",
+        this.restaurant
+      );
+      console.log("test:", result);
+      if (result.status == 201) {
+        this.$router.push({ name: "Home" });
+      }
     },
   },
   mounted() {
     let user = localStorage.getItem("user-info");
+    this.user = JSON.parse(user).name;
     if (!user) {
       this.$router.push({ name: "SignUp" });
     }

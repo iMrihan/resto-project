@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <h1>Hello User, Welcome On Update Restaurant Page</h1>
+  <h1>Hello {{ user }}, Welcome On Update Restaurant Page</h1>
 
   <form class="update">
     <input
@@ -43,7 +43,19 @@ export default {
         address: "",
         contact: "",
       },
+      user: "",
     };
+  },
+  methods: {
+    async updateRestaurant() {
+      let result = await axios.put(
+        `http://localhost:3000/restaurants/${this.$route.params.id}`,
+        this.restaurant
+      );
+      if (result.status == 200) {
+        this.$router.push({ name: "Home" });
+      }
+    },
   },
   async mounted() {
     let { data } = await axios.get(
@@ -53,6 +65,8 @@ export default {
     this.restaurant = data;
 
     let user = localStorage.getItem("user-info");
+    this.user = JSON.parse(user).name;
+
     if (!user) {
       this.$router.push({ name: "SignUp" });
     }
