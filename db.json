@@ -17,6 +17,18 @@
       "name": "khan",
       "password": "khan@123",
       "id": 3
+    },
+    {
+      "email": "sonu@123",
+      "name": "Sonu",
+      "password": "sonu@123",
+      "id": 4
+    },
+    {
+      "email": "peter@gmail.com",
+      "name": "peter",
+      "password": "peter@123",
+      "id": 5
     }
   ]
 }

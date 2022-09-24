@@ -1,15 +1,13 @@
 <template>
   <img class="logo" src="../assets/pngwing.com.png" alt="" />
-  <h1>Sign Up</h1>
-  <div class="register">
-    <input type="text" placeholder="Enter Name" v-model="name" />
-
+  <h1>Login</h1>
+  <div class="login">
     <input type="email" placeholder="Enter Email" v-model="email" />
 
     <input type="password" placeholder="Enter password" v-model="password" />
-    <button v-on:click="signup">Sign Up</button>
+    <button v-on:click="login">Login</button>
     <p>
-      <router-link to="/login">Login</router-link>
+      <router-link to="/signup">SignUp</router-link>
     </p>
   </div>
 </template>
@@ -17,23 +15,21 @@
 <script>
 import axios from "axios";
 export default {
-  name: "SingUp",
+  name: "Login",
   data() {
     return {
-      name: "",
       email: "",
       password: "",
     };
   },
   methods: {
-    async signup() {
-      let result = await axios.post("http://localhost:3000/users", {
-        email: this.email,
-        name: this.name,
-        password: this.password,
-      });
-      if (result.status == 201) {
-        localStorage.setItem("user-info", JSON.stringify(result.data));
+    async login() {
+      let result = await axios.get(
+        `http://localhost:3000/users?email=${this.email}&password=${this.password}`
+      );
+
+      if (result.status == 200 && result.data.length > 0) {
+        localStorage.setItem("user-info", JSON.stringify(result.data[0]));
         this.$router.push({ name: "Home" });
       }
     },
