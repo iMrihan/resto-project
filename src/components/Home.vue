@@ -18,7 +18,9 @@
       <td>{{ item.contact }}</td>
       <td>
         <router-link :to="'/update/' + item.id">Update</router-link>
-        <button v-on:click="deleteRestaurant(item.id)">Delete</button>
+        <button class="delete-button" v-on:click="deleteRestaurant(item.id)">
+          Delete
+        </button>
       </td>
     </tr>
   </table>
@@ -74,5 +76,14 @@ table {
 td {
   width: 160px;
   height: 40px;
+}
+.delete-button {
+  background: red;
+  border: 0px;
+  cursor: pointer;
+  color: white;
+  padding: 7px 16px;
+  margin-left: 10px;
+  border-radius: 5px;
 }
 </style>
