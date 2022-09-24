@@ -22,7 +22,7 @@
       "email": "peter@gmail.com",
       "name": "peter",
       "password": "peter@123",
-      "id": 5
+      "id": 4
     }
   ],
   "restaurants": [
@@ -45,10 +45,16 @@
       "id": 3
     },
     {
-      "name": "Sardar Dhaba",
-      "address": "Garh",
-      "contact": "362",
-      "id": 4
+      "id": 4,
+      "name": "Chatori Gali",
+      "address": "Fatehpur ",
+      "contact": "1232"
+    },
+    {
+      "name": "Haldiram's",
+      "address": "Delhi Saket",
+      "contact": "345",
+      "id": 5
     }
   ]
 }
