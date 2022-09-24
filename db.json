@@ -25,5 +25,19 @@
       "password": "peter@123",
       "id": 5
     }
+  ],
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "KFC",
+      "address": "Noida sector 50",
+      "contact": 111
+    },
+    {
+      "id": 2,
+      "name": "Chatori Gali",
+      "address": "Fatehpur ",
+      "contact": "1232"
+    }
   ]
 }
